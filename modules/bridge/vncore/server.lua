@@ -4,13 +4,12 @@ local Items = require 'modules.items.server'
 
 AddEventHandler('vncore:logout', server.playerDropped)
 
--- chưa hỗ trợ job trong phiên bản đầu tiên
---[[ AddEventHandler('esx:setJob', function(source, job, lastJob)
+AddEventHandler('vncore:setRole', function(name, role, lastRole)
 	local inventory = Inventory(source)
 	if not inventory then return end
-	inventory.player.groups[lastJob.name] = nil
-	inventory.player.groups[job.name] = job.grade
-end) ]]
+	inventory.player.groups[lastRole.name] = nil
+	inventory.player.groups[role.name] = role.grade
+end)
 
 local VNCore
 
@@ -30,7 +29,7 @@ server.accounts.black_money = 0
 ---@diagnostic disable-next-line: duplicate-set-field
 function server.setPlayerData(player)
 	local groups = {
-		--[player.job.name] = player.job.grade
+		[player.roles.job.name] = player.roles.job.grade
 	}
 
 	return {
@@ -116,8 +115,7 @@ end
 function server.isPlayerBoss(playerId)
 	local xPlayer = VNCore.GetPlayerFromId(playerId)
 
-	--return xPlayer.job.grade_name == 'boss'
-    return false
+	return xPlayer.getRole('job').isboss
 end
 
 --[[ MySQL.ready(function()
