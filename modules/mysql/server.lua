@@ -38,9 +38,9 @@ Citizen.CreateThreadNow(function()
         vehicleTable = 'player_vehicles'
         vehicleColumn = 'id'
     elseif shared.framework == 'vncore' then
-        playerTable = 'users'
+        playerTable = 'vn_users'
         playerColumn = 'identifier'
-        vehicleTable = 'vehicles'
+        vehicleTable = 'vn_vehicles'
         vehicleColumn = 'plate'
     else
         return
