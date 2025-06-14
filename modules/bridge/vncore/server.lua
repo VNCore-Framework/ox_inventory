@@ -37,7 +37,6 @@ function server.setPlayerData(player)
 		name = player.name,
 		groups = groups,
 		sex = player.sex or player.skin.sex,
-		--dateofbirth = player.dateofbirth or player.variables.dateofbirth,
 	}
 end
 
