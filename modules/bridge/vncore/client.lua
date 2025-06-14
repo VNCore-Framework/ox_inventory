@@ -1,4 +1,3 @@
-
 local VNCore = setmetatable({}, {
 	__index = function(self, index)
 		local obj = exports["vn-core"]:GetCore()
